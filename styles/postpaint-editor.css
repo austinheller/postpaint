@@ -1,0 +1,7 @@
+body.wp-admin #postpaint-css-code {
+  width: 100%;
+}
+
+body.wp-admin .CodeMirror {
+  border: 1px solid rgb(221, 221, 221);
+}
