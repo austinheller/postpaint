@@ -3,20 +3,20 @@
  * Plugin Name: Postpaint
  * Plugin URI: https://github.com/austinheller/postpaint
  * Description: Add custom CSS to posts, pages, and other custom post types.
- * Version: 0.1
+ * Version: 0.2
  * Author: Austin Heller
  * Author URI: http://aheller.me
  * Text Domain: postpaint
  * License: GPLv2 or later
 **/
 
-$postpaint_post_types = get_post_types();
+$GLOBALS['postpaint_post_types'] = get_post_types();
 
 /*
 Set up meta boxes.
 */
 function postpaint_add_meta_boxes() {
-  global $postpaint_post_types;
+  $post_types = $GLOBALS['postpaint_post_types'];
   add_meta_box( 'postpaint_css', __( 'Custom CSS', 'postpaint' ), 'postpaint_meta_callback', $postpaint_post_types );
 }
 
@@ -87,7 +87,8 @@ function postpaint_get_styles($id) {
 Site actions
 */
 function postpaint_wp_head() {
-  if( is_singular() && postpaint_has_css() ) {
+  $id = get_the_id();
+  if( is_singular() && postpaint_has_css($id) ) {
     $styles = postpaint_get_styles($id);
     postpaint_render_style_tag($styles);
   }
