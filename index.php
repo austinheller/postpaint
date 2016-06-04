@@ -110,4 +110,14 @@ function postpaint_wp_head() {
 
 add_filter('wp_head', 'postpaint_wp_head');
 
+function postpaint_body_class($classes) {
+  $this_theme = wp_get_theme();
+  $theme_id = esc_html( $this_theme->get( 'TextDomain' ) );
+  $classes[] = 'theme-' . $theme_id;
+  return $classes;
+}
+
+add_filter('body_class', 'postpaint_body_class');
+
+
 ?>
