@@ -10,6 +10,8 @@ Note: Only vanilla CSS allowed. Any non-CSS tags are automatically stripped.
 
 - Postpaint adds a class to the `<body>` to indicate the current active theme: `theme-[THEME-TEXTDOMAIN]`. When writing post CSS, you can scope your styles so that if you change themes, your styles won't clash with the new theme's appearance:
 
-  body.theme-twentyfifteen #page {
-    /* etc, etc */
-  }
+```
+body.theme-twentyfifteen #page {
+  /* etc, etc */
+}
+```
